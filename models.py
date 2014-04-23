@@ -45,7 +45,7 @@ class Job(models.Model):
 	class Meta:
 		abstract = True
 
-class SalariedJob(models.Model):
+class SalariedJob(Job):
 	scale_start = models.DecimalField(max_digits=8, decimal_places=2)
 	scale_end = models.DecimalField(max_digits=8, decimal_places=2)
 	hours = models.DecimalField(max_digits=4, decimal_places=2)
