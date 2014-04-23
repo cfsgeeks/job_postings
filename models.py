@@ -1,10 +1,11 @@
 from django.db import models
-from dateutil.relativedelta import *
+from django.utils import text
 import calendar
 
 TODAY = datetime.date.today()
 MONTH = TODAY.month
 YEAR = TODAY.year
+OPEN = datetime.date((YEAR+5),12,31)
 
 class Job(models.Model):
 
@@ -26,17 +27,24 @@ class Job(models.Model):
 	service = models.CharField(max_length=64)
 
 	def clean(self):
-		if self.term == 'CF' or self.term == 'CP' and self.contract_length is None:
-			raise ValidationError('Contact positions need a contract length specified in number of months.')
+		if self.term == 'CF' or self.term == 'CP':
+			if self.contract_length is None:
+				raise ValidationError('Contact positions need a contract length specified in number of months.')
 		if self.status == 'P' and self.publish_date is None:
 			self.publish_date = TODAY
 		if self.closing_date is None:
-			pass
+			self.closing_date = OPEN
+
+	def get_absolute_url(self):
+		return '/corporate-services/careers/' + text.slugify(self.title)
+
+	def __unicode__(self):
+		return self.title
 
 	class Meta:
 		abstract = True
 
-class SalariedJob(Job):
+class SalariedJob(models.Model):
 	scale_start = models.DecimalField(max_length=8)
 	scale_end = models.DecimalField(max_length=8)
 	hours = models.DecimalField(max_length=4)

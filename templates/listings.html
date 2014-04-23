@@ -1,0 +1,24 @@
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Position</th>
+			<th>Term</th>
+			<th>Location</th>
+			<th>Closing Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for job in jobs %}
+		<tr>
+			<td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
+			<td>{{job.term}}</td>
+			<td>{{job.loction}}</td>
+			{% if job.closing_date.year == now.year + 5 %}
+			<td>Open</td>
+			{% else %}
+			<td> {{job.closing_date}}</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
