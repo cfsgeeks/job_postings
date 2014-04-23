@@ -46,9 +46,9 @@ class Job(models.Model):
 		abstract = True
 
 class SalariedJob(models.Model):
-	scale_start = models.DecimalField(max_length=8)
-	scale_end = models.DecimalField(max_length=8)
-	hours = models.DecimalField(max_length=4)
+	scale_start = models.DecimalField(max_digits=8, decimal_places=2)
+	scale_end = models.DecimalField(max_digits=8, decimal_places=2)
+	hours = models.DecimalField(max_digits=4, decimal_places=2)
 
 class NonSalariedJob(Job):
-	wage = models.DecimalField(max_length=4)
+	wage = models.DecimalField(max_digits=4, decimal_places=2)
