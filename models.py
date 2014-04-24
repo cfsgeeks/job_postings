@@ -10,6 +10,9 @@ OPEN = datetime.date((YEAR+5),12,31)
 
 class Location(models.Model):
 	name = models.CharField(max_length=64)
+	
+	def __unicode__(self):
+		return self.name
 
 class Job(models.Model):
 
