@@ -1,5 +1,4 @@
 from django.contrib import admin
-from job_postings.models import SalariedJob,NonSalariedJob
+from job_postings.models import Job
 
-admin.site.register(SalariedJob)
-admin.site.register(NonSalariedJob)
+admin.site.register(Job)
