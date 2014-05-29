@@ -12,7 +12,7 @@
 		<tr>
 			<td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
 			<td>{{job.get_term_display}}</td>
-			<td>{% for location in job.location.all  %}{{location.name}}{% if job.location.count > 1 and not location.last %}, {% endif %}{% endfor %}</td>
+			<td>{% for location in job.location.all  %}{{location.name}}{% if job.location.count > 1 and not forloop.last %}, {% endif %}{% endfor %}</td>
 			<td>{{job.get_closing_date}}</td>
 		</tr>
 		{% endfor %}
