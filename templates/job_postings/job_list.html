@@ -8,7 +8,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		{% for job in jobs %}
+		{% for job in object_list %}
 		<tr>
 			<td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
 			<td>{{job.term}}</td>
