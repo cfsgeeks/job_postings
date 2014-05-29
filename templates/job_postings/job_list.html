@@ -1,20 +1,24 @@
-<table class="table">
-	<thead>
-		<tr>
-			<th>Position</th>
-			<th>Term</th>
-			<th>Location</th>
-			<th>Closing Date</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for job in object_list %}
-		<tr>
-			<td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
-			<td>{{job.get_term_display}}</td>
-			<td>{% for location in job.location.all  %}{{location.name}}{% if job.location.count > 1 and not forloop.last %}, {% endif %}{% endfor %}</td>
-			<td>{{job.get_closing_date}}</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+<div class="well">
+	<h3 class="vig">Current Postings</h3>
+	<table class="table table-condensed">
+	    <thead>
+	        <tr>
+	            <th>Position</th>
+	            <th>Term</th>
+	            <th>Location</th>
+	            <th>Closing Date</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        {% for job in object_list %}
+	        <tr>
+	            <td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
+	            <td>{{job.get_term_display}}</td>
+	            <td>{% for location in job.location.all  %}{{location.name}}{% if job.location.count > 1 and not forloop.last %}, {% endif %}{% endfor %}</td>
+	            <td>{{job.get_closing_date}}</td>
+	        </tr>
+	        {% endfor %}
+	    </tbody>
+	</table>
+</div>
+
