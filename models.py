@@ -51,7 +51,7 @@ class Job(models.Model):
 		self.slug = generate_slug()
 
 	def get_absolute_url(self):
-		return '/jobs/job/%s' % slugger(self.title)
+		return '/jobs/job/%s' % self.slug
 
 	def get_closing_date(self):
 		if self.closing_date == TODAY:
