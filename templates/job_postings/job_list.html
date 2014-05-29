@@ -13,11 +13,6 @@
 			<td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
 			<td>{{job.term}}</td>
 			<td>{{job.loction}}</td>
-			{% if job.closing_date.year == now.year + 5 %}
-			<td>Open</td>
-			{% else %}
-			<td> {{job.closing_date}}</td>
-			{% endif %}
 		</tr>
 		{% endfor %}
 	</tbody>

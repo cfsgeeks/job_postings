@@ -1,10 +1,5 @@
-from django.shortcuts import render
-from job_postings.models import Job
-import datetime
+from django.views.generic import ListView
+from job_postings.model import Job
 
-TODAY = datetime.date.today()
-
-def index(request):
-	jobs_list = Job.objects.filter(status='P',closing_date__gte=TODAY).order_by('-publish_date')
-	context = {'jobs':jobs_list}
-	return render(request,'listings.html',context)
+class JobList(ListView):
+    model = Job
