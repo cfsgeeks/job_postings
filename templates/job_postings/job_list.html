@@ -11,7 +11,7 @@
 		{% for job in object_list %}
 		<tr>
 			<td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
-			<td>{{job.term}}</td>
+			<td>{{job.get_term_display}}</td>
 			<td>{{job.loction}}</td>
 		</tr>
 		{% endfor %}
