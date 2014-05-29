@@ -67,9 +67,9 @@ class Job(models.Model):
 
 	def save(self,**kwargs):
 		if not self.id:
-			self.slug = generate_slug()
+			self.slug = self.generate_slug()
 		if self.id and not self.slug:
-			self.slug = generate_slug()
+			self.slug = self.generate_slug()
 		super(Job,self).save(**kwargs)
 
 	def generate_slug(self):
