@@ -9,3 +9,4 @@ class JobList(ListView):
 
 class JobDetail(DetailView):
     model = Job
+    #'''queryset = Job.objects.filter(closing_date__gte=TODAY)'''
