@@ -38,7 +38,7 @@ class Job(models.Model):
 	payscale_end = models.DecimalField(max_digits=8, decimal_places=2)
 	payscale_period = models.CharField(max_length=1,choices=WAGE_CHOICES)
 	hours_per_week = models.DecimalField(max_digits=4,decimal_places=2, help_text='Enter in decimal form. Example: 33 & 3/4 hours is 33.75')
-	slug = models.SlugField(blank=True)
+	slug = models.SlugField(blank=True,editable=False)
 
 	def clean(self):
 		if self.contract_length is None:
