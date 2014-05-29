@@ -51,5 +51,8 @@ class Job(models.Model):
 	def get_absolute_url(self):
 		return '/corporate-services/careers/%s' % slugger(self.title)
 
+	def get_closing_date(self):
+		return self.closing_date if self.closing_date is not OPEN else "OPEN"
+
 	def __unicode__(self):
 		return self.title
