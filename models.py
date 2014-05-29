@@ -49,7 +49,7 @@ class Job(models.Model):
 			self.closing_date = OPEN
 
 	def get_absolute_url(self):
-		return '/corporate-services/careers/%s' % slugger(self.title)
+		return '/jobs/job/%s' % slugger(self.title)
 
 	def get_closing_date(self):
 		if self.closing_date == TODAY:
