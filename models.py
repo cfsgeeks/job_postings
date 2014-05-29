@@ -74,4 +74,4 @@ class Job(models.Model):
 
 	def generate_slug(self):
 		import os,sha
-		return sha.sha(os.urandom(64)+slugger(self.title)+self.closing_date.isoformat()).hexdigest()[:8]
+		return sha.sha(sha.sha(os.urandom(64)).hexdigest()+slugger(self.title)+self.closing_date.isoformat()).hexdigest()[:8]
