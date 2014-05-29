@@ -27,7 +27,7 @@ class Job(models.Model):
 	title = models.CharField(max_length=64, blank=False)
 	location = models.ManyToManyField(Location)
 	term = models.CharField(max_length=2,choices=TERM_CHOICES)
-	contract_length = models.IntegerField(max_length=2, blank=True, help_text='Length specified in months')
+	contract_length = models.IntegerField(max_length=2, blank=True, help_text='Length specified in months',default=0)
 	extension_possible = models.BooleanField()
 	union = models.BooleanField()
 	positions_available = models.IntegerField(default=1)
