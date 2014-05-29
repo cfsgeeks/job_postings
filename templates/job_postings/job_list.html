@@ -12,7 +12,7 @@
 		<tr>
 			<td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
 			<td>{{job.get_term_display}}</td>
-			<td>{{job.loction}}</td>
+			<td>{{job.get_location_display}}</td>
 		</tr>
 		{% endfor %}
 	</tbody>
