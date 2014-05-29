@@ -55,7 +55,7 @@ class Job(models.Model):
 		if self.closing_date != OPEN:
 			return self.closing_date
 		else:
-			return "No Closing Date"
+			return "Open"
 
 	def __unicode__(self):
 		return self.title
