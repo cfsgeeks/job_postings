@@ -27,7 +27,7 @@ class Job(models.Model):
 	title = models.CharField(max_length=64, blank=False)
 	location = models.ManyToManyField(Location)
 	term = models.CharField(max_length=2,choices=TERM_CHOICES)
-	contract_length = models.IntegerField(max_length=2, blank=True, help_text='Length specified in months',default=0)
+	contract_length = models.IntegerField(max_length=2, blank=True, help_text='Length specified in months')
 	extension_possible = models.BooleanField()
 	union = models.BooleanField()
 	positions_available = models.IntegerField(default=1)
@@ -41,6 +41,8 @@ class Job(models.Model):
 	slug = models.SlugField()
 
 	def clean(self):
+		if self.contract_length is None:
+			self.contract_length = 0
 		if self.term == 'CF' or self.term == 'CP':
 			if self.contract_length is None:
 				raise ValidationError('Contact positions need a contract length specified in number of months.')
@@ -48,7 +50,6 @@ class Job(models.Model):
 			self.publish_date = TODAY
 		if self.closing_date is None:
 			self.closing_date = OPEN
-		self.slug = generate_slug()
 
 	def get_absolute_url(self):
 		return '/jobs/job/%s' % self.slug
@@ -63,6 +64,13 @@ class Job(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+	def save(self,**kwargs):
+		if not self.id:
+			self.slug = generate_slug()
+		if self.id and not self.slug:
+			self.slug = generate_slug()
+		super(Job,self).save(**kwargs)
 
 	def generate_slug(self):
 		import os,sha
