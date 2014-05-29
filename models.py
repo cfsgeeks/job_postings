@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import text
+from django.template.defaultfilters import slugify as slugger
 import datetime
 import calendar
 
@@ -10,7 +10,7 @@ OPEN = datetime.date((YEAR+5),12,31)
 
 class Location(models.Model):
 	name = models.CharField(max_length=64)
-	
+
 	def __unicode__(self):
 		return self.name
 
@@ -49,7 +49,7 @@ class Job(models.Model):
 			self.closing_date = OPEN
 
 	def get_absolute_url(self):
-		return '/corporate-services/careers/' + text.slugify(self.title)
+		return '/corporate-services/careers/%s' % slugger(self.title)
 
 	def __unicode__(self):
 		return self.title
