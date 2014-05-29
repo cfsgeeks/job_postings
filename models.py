@@ -52,7 +52,10 @@ class Job(models.Model):
 		return '/corporate-services/careers/%s' % slugger(self.title)
 
 	def get_closing_date(self):
-		return self.closing_date if self.closing_date is not OPEN else "OPEN"
+		if self.closing_date != OPEN:
+			return self.closing_date
+		else:
+			return "No Closing Date"
 
 	def __unicode__(self):
 		return self.title
