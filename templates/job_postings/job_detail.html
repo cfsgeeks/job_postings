@@ -1,7 +1,6 @@
-{% block title %}{{job.title}}{% endblock %}
 <div>
     <h4 class="vig">{{job.is_union}}</h4>
-    <h4 class="vig">Requires: {{job.title}}{% if job.positions_available > 1 %} &mdash; {{job.positions_available }} positions</h4>
+    <h4 class="vig">Requires: {{job.title}}{% if job.positions_available > 1 %} &mdash; {{job.positions_available }} positions{% endif %}</h4>
     <h4 class="vig">Salary</h4>
     {{job.payscale_start}} to {{job.payscale_end}} per {{job.get_payscale_period_display}}
     <div>
