@@ -8,18 +8,31 @@
     <h4 class="vig">{% if job.payscale_period == 'H' or job.payscale_period == 'W' %}Wage{% else %}Salary{% endif %}</h4>
     <p>${{job.payscale_start|intcomma}} to ${{job.payscale_end|intcomma}} {{job.get_payscale_period_display}}</p>
     <div>
-        {{job.requirements}}
+        <p>{{job.description}}</p>
     </div>
     <h4 class="vig">Location</h4>
     {% for location in job.location.all  %}
         <p>{{location.name}}</p>
     {% endfor %}
+    {% if job.service %}
+        <h4>Service</h4>
+        <p>{{job.service}}</p>
+    {% endif %}
+    {% if job.qualifications is not None %}
     <h4 class="vig">Qualifications</h4>
     <div>
-        {{job.qualifications}}
+        <p>{{job.qualifications}}</p>
     </div>
+    {% endif %}
+    {% if job.requirements %}
+        <h4>Requirements</h4>
+        {{job.requirements}}
+    {% endif %}
     <h4 class="vig">Hours of Work</h4>
-    {{job.hours_per_week}}
+    {% if job.hours_per_week > 0 %}{{job.hours_per_week}}{% endif %}
+    {% if job.hours_description is not None %}
+    <p>{{job.hours_description}}</p>
+    {% endif %}
 </div>
 <div>
     <p>Please submit your letter of interest and resume{% if job.get_closing_date != "Open" %} by <strong>{{job.get_closing_date}}</strong>{% endif %} to:</p>
