@@ -5,8 +5,8 @@ import datetime
 TODAY = datetime.datetime.today()
 
 class JobList(ListView):
-    queryset = Job.objects.filter(closing_date__gte=TODAY)
+    queryset = Job.objects.filter(closing_date__gte=TODAY,status='P')
 
 class JobDetail(DetailView):
     model = Job
-    #'''queryset = Job.objects.filter(closing_date__gte=TODAY)'''
+    queryset = Job.objects.filter(closing_date__gte=TODAY,status='P')
