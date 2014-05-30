@@ -8,7 +8,7 @@
     <h4 class="vig">{% if job.payscale_period == 'H' or job.payscale_period == 'W' %}Wage{% else %}Salary{% endif %}</h4>
     <p>${{job.payscale_start|intcomma}} {% if job.payscale_end > 0 %}to ${{job.payscale_end|intcomma}}{% endif %} {{job.get_payscale_period_display}}</p>
     <div>
-        <p>{{job.description|linebreaks}}</p>
+        <p>{{job.description|linebreaks|safe}}</p>
     </div>
     <h4 class="vig">Location</h4>
     {% for location in job.location.all  %}
@@ -21,17 +21,17 @@
     {% if job.qualifications %}
     <h4 class="vig">Qualifications</h4>
     <div>
-        <p>{{job.qualifications|linebreaks}}</p>
+        <p>{{job.qualifications|linebreaks|safe}}</p>
     </div>
     {% endif %}
     {% if job.requirements %}
         <h4 class="vig">Requirements</h4>
-        {{job.requirements|linebreaks}}
+        {{job.requirements|linebreaks|safe}}
     {% endif %}
     <h4 class="vig">Hours of Work</h4>
     {% if job.hours_per_week > 0 %}<p>{{job.hours_per_week|text_fraction}} hours per week</p>{% endif %}
     {% if job.hours_description %}
-    <p>{{job.hours_description|linebreaks}}</p>
+    <p>{{job.hours_description|linebreaks|safe}}</p>
     {% endif %}
 </div>
 <div>
