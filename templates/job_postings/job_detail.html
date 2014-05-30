@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block main %}
-{% block title %}{{job.title}}{% endblock %}
 <div>
     <h4 class="vig">{{job.is_union}}</h4>
     <h4 class="vig">Requires: {{job.title}}{% if job.positions_available > 1 %} &mdash; {{job.positions_available }} positions{% endif %}</h4>
@@ -13,7 +12,7 @@
     {% for location in job.location.all  %}
         <p>{{location.name}}</p>
     {% endfor %}
-    <h4>Qualifications</h4>
+    <h4 class="vig">Qualifications</h4>
     <div>
         {{job.qualifications}}
     </div>
