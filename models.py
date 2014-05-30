@@ -75,3 +75,8 @@ class Job(models.Model):
 	def generate_slug(self):
 		import os,sha
 		return sha.sha(sha.sha(os.urandom(64)).hexdigest()+slugger(self.title)+self.closing_date.isoformat()).hexdigest()[:8]
+
+	def is_union(self):
+		return bool(self.union)
+	def is_extended(self):
+		return bool(self.extension_possible)
