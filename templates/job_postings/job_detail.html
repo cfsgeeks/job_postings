@@ -24,14 +24,14 @@
 <div>
     <p>Please submit your letter of interest and resume{% if job.get_closing_date != "Open" %} by <strong>{{job.get_closing_date}}</strong>{% endif %} to:</p>
     <address>
-        <p>Human Resources Department</p>
-        <p>Kenora-Rainy River Districts Child and Family Services</p>
-        <p>820 Lakeview Drive</p>
-        <p>Kenora, Ontario P9N 3P7</p>
+        <p>Human Resources Department<br />
+        Kenora-Rainy River Districts Child and Family Services<br />
+        820 Lakeview Drive<br />
+        Kenora, Ontario P9N 3P7</p>
     </address>
     <div>
         <p>Fax No. (807) 467-5539</p>
-        <p>Email <a href="mailto:hr@krrcfs.ca?subject='Job Posting - {{job.title}}'">hr@krrcfs.ca</a></p>
+        <p>Email <a href="mailto:hr@krrcfs.ca?subject=Job Posting - {{job.title}}">hr@krrcfs.ca</a></p>
     </div>
 </div>
 {% endblock %}
