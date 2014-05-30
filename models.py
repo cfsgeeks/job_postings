@@ -36,7 +36,7 @@ class Job(models.Model):
 	requirements = models.TextField(blank=True)
 	service = models.CharField(max_length=64, blank=True)
 	payscale_start = models.DecimalField(max_digits=8, decimal_places=2)
-	payscale_end = models.DecimalField(max_digits=8, decimal_places=2,blank=True,null=True)
+	payscale_end = models.DecimalField(max_digits=8, decimal_places=2,blank=True,null=True,default=0)
 	payscale_period = models.CharField(max_length=1,choices=WAGE_CHOICES)
 	hours_per_week = models.DecimalField(max_digits=4,decimal_places=2, help_text='Enter in decimal form. Example: 33 & 3/4 hours is 33.75', default=0)
 	hours_description = models.TextField(blank=True,null=True, help_text='If the position is an on-call/casual/weekends position describe the working hours here.')
