@@ -30,7 +30,7 @@
     {% endif %}
     <h4 class="vig">Hours of Work</h4>
     {% if job.hours_per_week > 0 %}{{job.hours_per_week}}{% endif %}
-    {% if job.hours_description is not None %}
+    {% if job.hours_description %}
     <p>{{job.hours_description}}</p>
     {% endif %}
 </div>
