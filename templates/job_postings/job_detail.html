@@ -6,7 +6,7 @@
     <h4 class="vig">{% if job.is_union %}UNION POSITION{% else %}NON-UNION{% endif %}</h4>
     {% if job.positions_available > 1 %}<h5 class="vig">{{job.positions_available }} positions available</h5>{% endif %}
     <h4 class="vig">{% if job.payscale_period == 'H' or job.payscale_period == 'W' %}Wage{% else %}Salary{% endif %}</h4>
-    <p>${{job.payscale_start|intcomma}} {% if payscale_end > 0 %}to ${{job.payscale_end|intcomma}}{% endif %} {{job.get_payscale_period_display}}</p>
+    <p>${{job.payscale_start|intcomma}} {% if job.payscale_end > 0 %}to ${{job.payscale_end|intcomma}}{% endif %} {{job.get_payscale_period_display}}</p>
     <div>
         <p>{{job.description|linebreaks}}</p>
     </div>
