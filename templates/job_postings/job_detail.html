@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% load humanize %}
+{% block title %}{{job.title}}{% endblock %}
 {% block main %}
 <div>
     <h4 class="vig">{{job.is_union}}</h4>
     <h4 class="vig">Requires: {{job.title}}{% if job.positions_available > 1 %} &mdash; {{job.positions_available }} positions{% endif %}</h4>
     <h4 class="vig">Salary</h4>
-    ${{job.payscale_start|intcomma}} to ${{job.payscale_end|intcomma}} {{job.get_payscale_period_display}}
+    <p>${{job.payscale_start|intcomma}} to ${{job.payscale_end|intcomma}} {{job.get_payscale_period_display}}</p>
     <div>
-        {{job.description}}
+        {{job.requirements}}
     </div>
     <h4 class="vig">Location</h4>
     {% for location in job.location.all  %}
