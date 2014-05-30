@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load humanize %}
 {% block main %}
 <div class="well">
 	<h3 class="vig">Current Postings</h3>
-	<table class="table table-condensed">
+	<table class="table">
 	    <thead>
 	        <tr>
 	            <th>Position</th>
@@ -17,10 +18,26 @@
 	            <td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
 	            <td>{{job.get_term_display}}</td>
 	            <td>{% for location in job.location.all  %}{{location.name}}{% if job.location.count > 1 and not forloop.last %}, {% endif %}{% endfor %}</td>
-	            <td>{{job.get_closing_date}}</td>
+	            <td>{{job.get_closing_date|naturalday}}</td>
 	        </tr>
 	        {% endfor %}
 	    </tbody>
 	</table>
+</div>
+<div>
+	<p>The Kenora-Rainy River Districts Child and Family Services invites you to submit a resume for a rewarding career in making a difference in the lives of children.</p>
+<p>Our agency is&nbsp;pleased to offer a modern workplace and state of the art technology. As a dedicated worker, you will work with a team of motivated professionals to provide services that promote the well-being of children and families in the districts of Kenora and Rainy River.</p>
+<p>We offer competitive salaries and an excellent benefits package including:</p>
+<ul>
+<li>Medical, Dental, Vision Care &ndash; plus drug plan</li>
+<li>Paid Vacation and Disability Benefits</li>
+<li>OMERS Pension Plan</li>
+<li>Training</li>
+</ul>
+<p>We have six office locations throughout beautiful Northwestern Ontario:<br />Atikokan, Dryden, Fort Frances, Kenora, Red Lake, and Sioux Lookout.</p>
+<p>To apply, please send your resume and cover letter to:</p>
+<p>Kenora-Rainy River Districts Child and Family Services<br />820 Lakeview Drive,<br />Kenora, ON.&nbsp; P9N 3P7</p>
+<p>Attention:&nbsp; <a href="/forms/human-resources/">Human Resources</a></p>
+<p>Tel: (807) 467-5437&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fax:&nbsp; (807) 467-5539</p>
 </div>
 {% endblock %}
