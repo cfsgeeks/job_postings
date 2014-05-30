@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block main %}
 {% block title %}{{job.title}}{% endblock %}
 <div>
     <h4 class="vig">{{job.is_union}}</h4>
@@ -31,3 +33,4 @@
         <p>Email <a href="mailto:hr@krrcfs.ca?subject='Job Posting - {{job.title}}'">hr@krrcfs.ca</a></p>
     </div>
 </div>
+{% endblock %}
