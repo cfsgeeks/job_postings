@@ -31,7 +31,7 @@ class Job(models.Model):
 	extension_possible = models.BooleanField()
 	union = models.BooleanField()
 	positions_available = models.IntegerField(default=1)
-	#description = models.TextField(blank=True,null=True)
+	description = models.TextField(blank=True,null=True)
 	qualifications = models.TextField(blank=True)
 	requirements = models.TextField(blank=True)
 	service = models.CharField(max_length=64, blank=True)
@@ -39,7 +39,7 @@ class Job(models.Model):
 	payscale_end = models.DecimalField(max_digits=8, decimal_places=2)
 	payscale_period = models.CharField(max_length=1,choices=WAGE_CHOICES)
 	hours_per_week = models.DecimalField(max_digits=4,decimal_places=2, help_text='Enter in decimal form. Example: 33 & 3/4 hours is 33.75', default=0)
-	#hours_description = models.TextField(blank=True,null=True, help_text='If the position is an on-call/casual/weekends position describe the working hours here.')
+	hours_description = models.TextField(blank=True,null=True, help_text='If the position is an on-call/casual/weekends position describe the working hours here.')
 	slug = models.SlugField(blank=True,editable=False)
 
 	def clean(self):
