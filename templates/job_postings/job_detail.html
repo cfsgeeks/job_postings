@@ -4,7 +4,7 @@
 {% block main %}
 <div>
     <h4 class="vig">{{job.is_union}}</h4>
-    <h4 class="vig">Requires: {{job.title}}{% if job.positions_available > 1 %} &mdash; {{job.positions_available }} positions{% endif %}</h4>
+    {% if job.positions_available > 1 %}<h5 class="vig">{{job.positions_available }} positions available</h5>{% endif %}
     <h4 class="vig">{% if job.payscale_period == 'H' or job.payscale_period == 'W' %}Wage{% else %}Salary{% endif %}</h4>
     <p>${{job.payscale_start|intcomma}} {% if payscale_end > 0 %}to ${{job.payscale_end|intcomma}}{% endif %} {{job.get_payscale_period_display}}</p>
     <div>
