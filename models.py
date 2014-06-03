@@ -18,7 +18,7 @@ class Job(models.Model):
 
 	STATUS_CHOICES = (('D','Draft'),('P','Published'))
 	LOCATION_CHOICES = (('ALL','All'), ('ATI','Atikokan'), ('DRY','Dryden'),('FFR','Fort Frances'),('KEN','Kenora'),('RLK','Red Lake'),('SLK','Sioux Lookout'))
-	TERM_CHOICES = (('PT','Part-Time'),('FT','Full-Time'),('CF','Contact Full-Time'),('CP','Contract Part-Time'))
+	TERM_CHOICES = (('PT','Part-Time'),('FT','Full-Time'),('CF','Contact Full-Time'),('CP','Contract Part-Time'),('TM','Term'))
 	WAGE_CHOICES = (('A','Per Annum'),('H','Per Hour'),('W','Per Week'))
 
 	status = models.CharField(max_length='1',choices=STATUS_CHOICES)
@@ -26,9 +26,8 @@ class Job(models.Model):
 	closing_date = models.DateField(blank=True)
 	title = models.CharField(max_length=64, blank=False)
 	location = models.ManyToManyField(Location)
-	term = models.CharField(max_length=2,choices=TERM_CHOICES)
-	contract_length = models.IntegerField(max_length=2, blank=True, null=True, help_text='Length specified in months', default=0)
-	extension_possible = models.BooleanField()
+	employment_type = models.CharField(max_length=2,choices=TERM_CHOICES)
+	contract_length = models.IntegerField(max_length=2, blank=True, null=True, help_text='Length specified in months', default=0, verbose_name="Contact/Term Length")
 	union = models.BooleanField()
 	positions_available = models.IntegerField(default=1)
 	description = models.TextField(blank=True,null=True)
