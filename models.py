@@ -26,7 +26,7 @@ class Job(models.Model):
 	closing_date = models.DateField(blank=True)
 	title = models.CharField(max_length=64, blank=False)
 	location = models.ManyToManyField(Location)
-	employment_type = models.CharField(max_length=2,choices=TERM_CHOICES)
+	term = models.CharField(max_length=2,choices=TERM_CHOICES, verbose_name="Employment Type")
 	contract_length = models.IntegerField(max_length=2, blank=True, null=True, help_text='Length specified in months', default=0, verbose_name="Contact/Term Length")
 	union = models.BooleanField()
 	positions_available = models.IntegerField(default=1)
