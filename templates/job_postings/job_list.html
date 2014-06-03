@@ -17,7 +17,7 @@
 	        {% for job in object_list %}
 	        <tr>
 	            <td><a href="{{job.get_absolute_url}}">{{job.title}}</a></td>
-	            <td>{{job.get_employment_type_display}}</td>
+	            <td>{{job.get_term_display}}</td>
 	            <td>{% for location in job.location.all  %}{{location.name}}{% if job.location.count > 1 and not forloop.last %}, {% endif %}{% endfor %}</td>
 	            <td>{{job.get_closing_date|naturalday|title}}</td>
 	        </tr>
